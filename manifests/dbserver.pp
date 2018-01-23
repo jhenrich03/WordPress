@@ -1,4 +1,3 @@
-include wordpress::config
 include wordpress::db
 
 host { "webserver":

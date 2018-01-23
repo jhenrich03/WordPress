@@ -1,4 +1,3 @@
-include wordpress::config
 include wordpress::web
 include wordpress::install
 

@@ -1,36 +1,48 @@
-class wordpress::db {
+class wordpress::db (
 
+	$root_password, 
+	$db_ip,     
+	$db_name,       
+	$db_user,      
+	$db_password,  
+	$db_tables,     
+	$db_host,       
+	$wp_user,       
+	$db_phrase,   
+	
+) {
+	
     class { 'mysql::server':
 	
-      root_password           => $wordpress::config::root_password,
+      root_password           => $root_password,
       remove_default_accounts => true,
 	  override_options        => {
 	    mysqld              => {
-		  'bind-address'    => $wordpress::config::db_ip,
+		  'bind-address'    => $db_ip,
 		},
 	  },
 	
       databases => {
-        $wordpress::config::db_name => {
+        $db_name => {
           ensure  => 'present',
           charset => 'utf8',
         },
       },
 
       users => {
-        $wordpress::config::db_user => {
+        $db_user => {
           ensure        => 'present',
-          password_hash =>  mysql_password($wordpress::config::db_password),
+          password_hash =>  mysql_password($db_password),
         },
       },
 
       grants => {
-        "${wordpress::config::db_user}/${wordpress::config::db_tables}"   => {
+        "${db_user}/${db_tables}" => {
           ensure     => 'present',
           options    => ['GRANT'],
           privileges => ['ALL'],
-          table      => $wordpress::config::db_tables,
-          user       => $wordpress::config::db_user,
+          table      => $db_tables,
+          user       => $db_user,
         },
       },
     }

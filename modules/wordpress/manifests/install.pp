@@ -1,6 +1,8 @@
-class wordpress::install {
+class wordpress::install (
 
-  $wordpress_file = "latest.tar.gz"
+  $wordpress_file
+  
+) {
 
   file { "/usr/local/${wordpress_file}":
 	ensure  => "present",

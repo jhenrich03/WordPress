@@ -22,16 +22,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', '<%= "${wordpress::config::db_name}" %>');
+define('DB_NAME', '<%= lookup('wordpress::db::db_name') %>');
 
 /** MySQL database username */
-define('DB_USER', '<%= "${wordpress::config::wp_user}" %>');
+define('DB_USER', '<%= lookup('wordpress::db::wp_user') %>');
 
 /** MySQL database password */
-define('DB_PASSWORD', '<%= "${wordpress::config::db_password}" %>');
+define('DB_PASSWORD', '<%= lookup('wordpress::db::db_password') %>');
 
 /** MySQL hostname */
-define('DB_HOST', '<%= "${wordpress::config::db_host}" %>');
+define('DB_HOST', '<%= lookup('wordpress::db::db_host') %>');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -48,14 +48,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '<%= "${wordpress::config::db_phrase}" %>');
-define('SECURE_AUTH_KEY',  '<%= "${wordpress::config::db_phrase}" %>');
-define('LOGGED_IN_KEY',    '<%= "${wordpress::config::db_phrase}" %>');
-define('NONCE_KEY',        '<%= "${wordpress::config::db_phrase}" %>');
-define('AUTH_SALT',        '<%= "${wordpress::config::db_phrase}" %>');
-define('SECURE_AUTH_SALT', '<%= "${wordpress::config::db_phrase}" %>');
-define('LOGGED_IN_SALT',   '<%= "${wordpress::config::db_phrase}" %>');
-define('NONCE_SALT',       '<%= "${wordpress::config::db_phrase}" %>');
+define('AUTH_KEY',         '<%= lookup('wordpress::db::db_phrase') %>');
+define('SECURE_AUTH_KEY',  '<%= lookup('wordpress::db::db_phrase') %>');
+define('LOGGED_IN_KEY',    '<%= lookup('wordpress::db::db_phrase') %>');
+define('NONCE_KEY',        '<%= lookup('wordpress::db::db_phrase') %>');
+define('AUTH_SALT',        '<%= lookup('wordpress::db::db_phrase') %>');
+define('SECURE_AUTH_SALT', '<%= lookup('wordpress::db::db_phrase') %>');
+define('LOGGED_IN_SALT',   '<%= lookup('wordpress::db::db_phrase') %>');
+define('NONCE_SALT',       '<%= lookup('wordpress::db::db_phrase') %>');
 
 /**#@-*/
 

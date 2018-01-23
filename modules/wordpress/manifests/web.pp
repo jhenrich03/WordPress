@@ -1,11 +1,9 @@
-class wordpress::web {
+class wordpress::web (  
 
-  $packages = "${facts['os']['distro']['codename']}" ? {
-	   'trusty' => [ 'php5', 'libapache2-mod-php5', 'php5-mysql', 'apache2', 'phpmyadmin', 'php5-mcrypt', ],
-	   'xenial' => [ 'php', 'libapache2-mod-php', 'php-mysql', 'apache2', 'phpmyadmin', ],
-	   default  => [ 'apache2', 'phpmyadmin' ],
-	   }
+  $packages,
+  $service_name
 
+) {	 
   package { $packages:
     ensure => 'installed',
   }
@@ -13,7 +11,7 @@ class wordpress::web {
   file { '/etc/apache2/apache2.conf':
     ensure  => 'file',
 	content => file('wordpress/apache2.conf'),
-    notify  => Service['apache2'],
+    notify  => Service[$service_name],
   }
 
   file { '/etc/apache2/mods-enabled/dir.conf':
@@ -32,10 +30,10 @@ class wordpress::web {
 	content => "",
   }
 
-  service { 'apache2':
+  service { $service_name:
     ensure  => 'running',
     enable  => true,
-    require => Package['apache2'],
+    require => Package[$service_name],
   }
 
 }

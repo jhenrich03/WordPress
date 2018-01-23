@@ -6,6 +6,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.provision "shell", path: "scripts/install.sh"
   
+  
   #define the database server & provision with puppet
   config.vm.define "db" do |db| 
     db.vm.hostname = "dbserver" 
@@ -13,6 +14,8 @@ Vagrant.configure(2) do |config|
 	db.vm.provision "puppet" do |puppet|
 	  puppet.module_path = "modules"
 	  puppet.manifest_file = "dbserver.pp"
+	  puppet.hiera_config_path = "hiera.yaml"
+	  #puppet.options = "--verbose --debug"
 	  end
   end
   
@@ -24,6 +27,8 @@ Vagrant.configure(2) do |config|
 	web.vm.provision "puppet" do |puppet|
 	  puppet.module_path = "modules"
 	  puppet.manifest_file = "webserver.pp"
+	  puppet.hiera_config_path = "hiera.yaml"
+	  #puppet.options = "--verbose --debug"
 	  end
   end 
 end
