@@ -1,6 +1,6 @@
-## MANAGED BY PUPPET ##
-
 <?php
+/* ### MANAGED BY PUPPET ###
+
 /**
  * Debian local configuration file
  *
