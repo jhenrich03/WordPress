@@ -1,0 +1,3 @@
+---
+wordpress::web::packages: [ 'php5', 'libapache2-mod-php5', 'php5-mysql', 'apache2', 'phpmyadmin', 'php5-mcrypt' ]
+wordpress::web::service_name: 'apache2'

@@ -1,0 +1,12 @@
+---
+wordpress::db::db_name: 'wordpress-db'
+wordpress::db::wp_user: 'wordpress'
+wordpress::db::db_password: 'wordpress'
+wordpress::db::db_phrase: 'testphrase'
+wordpress::db::root_password: 'bk3qql'
+wordpress::db::db_perms: 'ALL'
+wordpress::db::db_tables: "%{lookup('wordpress::db::db_name')}.*"
+wordpress::db::db_ip: '172.31.0.10'
+wordpress::db::db_host: 'dbserver'
+wordpress::db::db_user: 'wordpress@%'
+wordpress::install::wordpress_file: 'latest.tar.gz'
