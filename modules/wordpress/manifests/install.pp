@@ -3,9 +3,9 @@ class wordpress::install {
   $wordpress_file = "latest.tar.gz"
 
   file { "/usr/local/${wordpress_file}":
-	ensure  => "present",
-    	source  => "http://wordpress.org/${wordpress_file}",
-	replace => "false",
+    ensure  => "present",
+    source  => "http://wordpress.org/${wordpress_file}",
+    replace => "false",
   }
 
   exec { "Extract":
