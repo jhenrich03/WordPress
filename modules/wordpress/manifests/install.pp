@@ -4,7 +4,7 @@ class wordpress::install {
 
   file { "/usr/local/${wordpress_file}":
 	ensure  => "present",
-    source  => "http://wordpress.org/${wordpress_file}",
+    	source  => "http://wordpress.org/${wordpress_file}",
 	replace => "false",
   }
 
